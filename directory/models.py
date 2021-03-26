@@ -21,7 +21,7 @@ class Subject(TimeStampMixin):
 class Teacher (TimeStampMixin):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    profile_picture = models.CharField(max_length=200)
+    profile_picture = models.ImageField(upload_to="profile_images", blank=True)
     email = models.EmailField(unique=True)
     phone_number = PhoneField(blank=True, help_text='Contact phone number')
     room_number = models.IntegerField()
@@ -34,6 +34,7 @@ class Teacher (TimeStampMixin):
     def __str__(self):
         return self.first_name
         
-      
+   
+  
          
     
