@@ -1,10 +1,10 @@
 from django.http import HttpResponse, HttpRequest
 
-newwApp = """
+MainProject = """
 <!DOCTYPE html>
 <html>
 <head>
-<title>Teacher Directory </title>
+<title>Main Project </title>
 <style>
     body {
         width: 1000px;
@@ -12,25 +12,12 @@ newwApp = """
         font-family: Tahoma, Verdana, Arial, sans-serif;
         background: #AAAAAA;
     }
-    div {
-      padding: 30px;
-      background: #FFFFFF;
-      margin: 30px;
-      border-radius: 5px;
-      border: 1px solid #888888;
-    }
-    pre {
-      padding: 15px;
-    }
-    code, pre {
-      font-size: 16px;
-      background: #DDDDDD
-    }
+  
 </style>
 </head>
 <body>
   <div>
-    <h1>Teacher Directory</h1>
+    <h1>Main Project</h1>
    
   </div>
 </body>
@@ -38,4 +25,4 @@ newwApp = """
 """
 
 def index(request):
-    return HttpResponse(newwApp.replace("{IPADDRESS}",request.get_host()))
+    return HttpResponse(MainProject.replace("{IPADDRESS}",request.get_host()))
