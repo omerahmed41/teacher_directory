@@ -31,3 +31,6 @@ if an image is not present for the profile then you should use a default placeho
  -  Postgres
  -  Postfix
   
+
+#DEMO app URL
+ https://www.teacher_directory.omersuliman.com
