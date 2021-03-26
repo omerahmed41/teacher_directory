@@ -31,6 +31,13 @@ if an image is not present for the profile then you should use a default placeho
  -  Postgres
  -  Postfix
   
+# Find the ERD
+https://lucid.app/lucidchart/34d86fa3-b28f-4c74-b185-d4789310098c/view?page=0_0#
+# Systems architecture
+ to do 
+
+
+# To do:
 
 #DEMO app URL
  https://www.teacher_directory.omersuliman.com
