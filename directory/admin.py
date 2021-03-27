@@ -7,6 +7,9 @@ from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
+from django_object_actions import DjangoObjectActions
+from django.http import HttpResponse,HttpResponseRedirect
+
 
 class LastNameFirstLetterFilter(admin.SimpleListFilter):
    
@@ -47,16 +50,22 @@ class TeacherForm(forms.ModelForm):
         if cleaned_data.get('subjects').count() > 5:
             raise ValidationError('You have to choose exactly 5 subjects per Teacher ')
 
-
+def ImportCSVFile(self, request, queryset):
+     return HttpResponseRedirect('/profile_upload' )
 @admin.register(Teacher)
 class TeacherAdmin(admin.ModelAdmin):
     form = TeacherForm
     list_display = ('id','upper_case_name','email')
     list_filter = ['last_name', 'subjects',LastNameFirstLetterFilter]
     search_fields = ['email']
+    actions = [ImportCSVFile]
+    
     
     def upper_case_name(self, obj):
        return ("%s %s" % (obj.first_name, obj.last_name)).upper()
     upper_case_name.short_description = 'Full Name'
     
- 
+
+admin.site.site_header = 'Teacher Directory'
+admin.site.title = 'title'
+admin.site.add_action(ImportCSVFile)

@@ -1,13 +1,51 @@
-{% extends 'admin/index.html' %}
-{% load i18n  %}
-{% block breadcrumbs %}<div class="breadcrumbs"><a href="/admin/">{% trans "Home" %}</a> > My View</div> {% endblock %}
+{% extends 'directory/base.html' %}
+
+{% block title %} Teacher Directory {% endblock %}
 
 {% block content %}
 
-{% if user.is_superuser %}
-    <p>Hello, admin.</p>
-{% else %}
-    <p>Please login to see the content</p>
-{% endif %}
+             
+      
+       
 
+    <div class="container">
+         {% if not teachers %}   
+         <p> Please add Data to Database </p>
+         <a  href="/import_CSV_file" class="btn btn-outline-success my-2 my-sm-0" type="submit">Import CSV File</a>         
+         {% endif %}    
+                 <!--  row  -->
+        <div class="row">          
+        {% for teacher in teachers %}      
+            <div class="col-md-6">
+              <div class="container mt-5 d-flex justify-content-center">
+            <div class="card p-3">
+                <div class="d-flex align-items-center">
+                    <div class="image"> <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format                        &fit=crop            &w=500&q=80" class="rounded" width="155"> </div>
+                    <div class="ml-3 w-100">
+                        <h4 class="mb-0 mt-0">{{teacher}}</h4> <span>{{teacher.email}}</span>
+                        <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                            <div class="d-flex flex-column"> <span class="articles">PhoneNumber  |</span>
+                             <span class="number1">{{teacher.phone_number}}</span> </div>
+                            <div class="d-flex flex-column"> <span class="followers">RoomNumber</span> 
+                            <span class="number2">{{teacher.room_number}} </span> </div>
+                        </div>
+                        <div class="button mt-2 d-flex flex-row align-items-center">
+                        <a  href="/teacher/{{ teacher.id }}/" class="btn btn-sm btn-outline-primary w-1000" type="submit">detail</a>
+                         </div>
+                    </div>
+                </div>
+               </div>
+          </div>
+          </div>
+      {% endfor %} 
+      </div>
+        <hr>
+        
+    </div> <!-- /container -->
+
+</main>
+
+<footer class="container">
+    <p>&copy; Omer Suliman March 27-2021</p>
+</footer>
 {% endblock %}

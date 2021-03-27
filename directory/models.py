@@ -32,7 +32,7 @@ class Teacher (TimeStampMixin):
         ordering = ['first_name']
 
     def __str__(self):
-        return self.first_name + '--' +  self.last_name
+        return self.first_name + ' ' +  self.last_name
         
    
     

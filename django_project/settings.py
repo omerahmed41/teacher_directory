@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'directory.apps.DirectoryConfig',
     'phone_field',
+    
 ]
 
 MIDDLEWARE = [

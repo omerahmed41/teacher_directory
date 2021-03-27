@@ -13,22 +13,30 @@ def valid_email(email):
   return bool(re.search(r"^[\w\.\+\-]+\@[\w]+\.[a-z]{2,3}$", email))
 
 pleaseLogin = """  <h1>Please Login</h1>"""
+newwApp = """  <h1>Teacher Directory</h1>"""
 
 def index(request):
-    return HttpResponse(newwApp.replace("{IPADDRESS}",request.get_host()))
+    template = "directory/index.html"
+    teachers = Teacher.objects.all()
+    context = {'teachers': teachers}
+    return render(request, template, context)
 
 
+def about(request):
+    template = "directory/about.html"
+    context = {}
+    return render(request, template, context)
+    
+    
+def detail(request,teacher_id):
+    template = "directory/detail.html"
+    teacher = Teacher.objects.get(pk=teacher_id)
+    context = {'teacher': teacher}
+    return render(request, template, context)
 
-def teatcher_import(request):
-   template = loader.get_template('directory/index.html')
-   context = {'name': 'omer'}
-   if request.user.is_superuser:
-     return render(request, 'directory/index.html', context)
-   else:
-      return HttpResponse(pleaseLogin.replace("{IPADDRESS}",request.get_host()))
+
       
-      
-def profile_upload(request):
+def import_CSV_file(request):
     
     # declaring template
     template = "directory/profile_upload.html"
@@ -71,12 +79,13 @@ def profile_upload(request):
               subjects_names = subjects_str.split(", ")              
               subjects_names = map(str.lower, subjects_names) # normalize them, all lowercase
               subjects_names = list(set(subjects_names)) # remove duplicates
+              
               added_subjects = []             
               for subject_name in subjects_names:                  
                   print (subject_name)
-                  subject, _ = Subject.objects.get_or_create(name=subject_name)                
+                  subject, _ = Subject.objects.get_or_create(name= subject_name.replace('"', ''))                
                   Teachers = Teacher.objects.get(id=teacher.id)               
-                  if  Teachers.subjects.count() < 6:
+                  if  Teachers.subjects.count() < 5:
                       Teachers.subjects.add(subject ) 
                       added_subjects.append(subject_name)
                       
