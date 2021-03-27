@@ -29,6 +29,7 @@ pip3 install django-phone-field
 pip3 install Pillow
 
 
+
 # Sever software Recommendation
  -  VPS hosted by digtal Ocean 
  -  Django
@@ -49,3 +50,5 @@ https://lucid.app/lucidchart/34d86fa3-b28f-4c74-b185-d4789310098c/view?page=0_0#
 #DEMO app URL
  http://omersuliman.com
  
+username : admin
+password: admin
