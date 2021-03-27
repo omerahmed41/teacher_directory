@@ -22,6 +22,13 @@ The CSV attached contains a list of teacher who need to be uploaded as well as t
 profile image. Profile images are in the attached Zip file.
 if an image is not present for the profile then you should use a default placeholder image.
 
+# Getting Start
+- git pull
+- install these packages :
+pip3 install django-phone-field
+pip3 install Pillow
+
+
 # Sever software Recommendation
  -  VPS hosted by digtal Ocean 
  -  Django

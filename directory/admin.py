@@ -18,9 +18,10 @@ class LastNameFirstLetterFilter(admin.SimpleListFilter):
           teachers = Teacher.objects.all().distinct()
           list_teacher = []
           for teacher in teachers:
-             raw =  ( teacher.last_name[0], teacher.last_name[0])
-             if raw not in list_teacher:
-                list_teacher.append( raw )
+             if  teacher.last_name:         
+                 raw =  ( teacher.last_name[0], teacher.last_name[0])
+                 if raw not in list_teacher:
+                    list_teacher.append( raw )
           return (
               sorted(list_teacher, key=lambda tp:tp[1])
           )
@@ -56,6 +57,6 @@ class TeacherAdmin(admin.ModelAdmin):
     
     def upper_case_name(self, obj):
        return ("%s %s" % (obj.first_name, obj.last_name)).upper()
-    upper_case_name.short_description = 'Name'
+    upper_case_name.short_description = 'Full Name'
     
  

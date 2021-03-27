@@ -1,0 +1,55 @@
+{% extends 'admin/index.html' %}
+{% load i18n  %}
+{% block breadcrumbs %}<div class="breadcrumbs"><a href="/admin/">{% trans "Home" %}</a> >import Teachers</div> {% endblock %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teachers - import CSV file</title>
+</head>
+
+     
+{% if user.is_superuser %}
+    
+<body>
+    
+    {% if messages %}
+        
+        {% for message in messages %}
+            <div>
+<!--                | means OR operator-->
+                 <strong>{{message|safe}}</strong>                
+                 {% for log in logs %}
+                   <ul>   
+                    <li>{{log}}</li>    
+                   </ul>        
+                 {% endfor %}    
+            </div>
+            
+        {% endfor %}    
+            
+    {% else %}
+      <p>Hello, {{user}}</p>
+      <p>Select The CSV file and click upload</p>
+      {{order}}
+      <form action="" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <label for="file1"> Upload a file</label>
+          <input type="file" id="file1" name="file">
+          <small>Only accepts CSV files</small>
+          <button type="submit">Upload</button>
+      </form>
+     
+    {% endif %}
+     
+   
+
+{% else %}
+    <p>Please login to see the content</p>
+{% endif %}
+</body>
+</html>
+
+{% endblock %}

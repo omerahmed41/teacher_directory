@@ -24,7 +24,7 @@ class Teacher (TimeStampMixin):
     profile_picture = models.ImageField('profile_picture', blank=True) 
     email = models.EmailField(unique=True)
     phone_number = PhoneField(blank=True, help_text='Contact phone number')
-    room_number = models.IntegerField()
+    room_number = models.CharField(max_length=4)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     subjects = models.ManyToManyField(Subject)
@@ -32,7 +32,7 @@ class Teacher (TimeStampMixin):
         ordering = ['first_name']
 
     def __str__(self):
-        return self.first_name + ' ' +  self.last_name
+        return self.first_name + '--' +  self.last_name
         
    
     

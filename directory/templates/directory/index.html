@@ -1,0 +1,13 @@
+{% extends 'admin/index.html' %}
+{% load i18n  %}
+{% block breadcrumbs %}<div class="breadcrumbs"><a href="/admin/">{% trans "Home" %}</a> > My View</div> {% endblock %}
+
+{% block content %}
+
+{% if user.is_superuser %}
+    <p>Hello, admin.</p>
+{% else %}
+    <p>Please login to see the content</p>
+{% endif %}
+
+{% endblock %}
