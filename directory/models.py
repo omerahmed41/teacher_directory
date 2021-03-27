@@ -1,7 +1,7 @@
 from django.db import models
 from phone_field import PhoneField
 
-
+from django.utils.html import mark_safe
 class TimeStampMixin(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -21,7 +21,7 @@ class Subject(TimeStampMixin):
 class Teacher (TimeStampMixin):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    profile_picture = models.ImageField(upload_to="profile_images", blank=True)
+    profile_picture = models.ImageField('profile_picture', blank=True) 
     email = models.EmailField(unique=True)
     phone_number = PhoneField(blank=True, help_text='Contact phone number')
     room_number = models.IntegerField()
@@ -32,9 +32,7 @@ class Teacher (TimeStampMixin):
         ordering = ['first_name']
 
     def __str__(self):
-        return self.first_name
+        return self.first_name + ' ' +  self.last_name
         
    
-  
-         
     

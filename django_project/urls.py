@@ -6,4 +6,4 @@ urlpatterns = [
     #path('', views.index, name='index'),
     path('', include('directory.urls')),
     path('admin/', admin.site.urls)
-]
+] 
