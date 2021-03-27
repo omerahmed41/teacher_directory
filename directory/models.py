@@ -1,6 +1,9 @@
 from django.db import models
 from phone_field import PhoneField
-
+from django.core.files.storage import default_storage
+import os
+import os.path
+from os import path
 from django.utils.html import mark_safe
 class TimeStampMixin(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
@@ -34,5 +37,3 @@ class Teacher (TimeStampMixin):
     def __str__(self):
         return self.first_name + ' ' +  self.last_name
         
-   
-    

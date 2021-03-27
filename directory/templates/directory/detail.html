@@ -9,9 +9,16 @@
       <div class="padding">
     <div class="col-md-8">
         <!-- Column -->
-        <div class="card"> <img class="card-img-top" src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1559285236/profile-bg.jpg" alt="Card image cap">
+  
+        <div class="card"> <img class="card-img-top" src="/static/school.png" alt="Card image cap">
             <div class="card-body little-profile text-center">
-                <div class="pro-img"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1559285187/man-1246508_640.jpg" alt="user"></div>
+            {% if not teacher.profile_picture.url %}  
+             <div class="image"> <img src="{{ teacher.getimage }}" class="rounded" width="155"> </div> 
+           {% else %}
+            <div class="image"> <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format                        &fit=crop            &w=500&q=80" class="rounded" width="155"> </div>
+           {% endif %}  
+               
+                
                 <h3 class="m-b-0">{{teacher}}</h3>
                 <p>{{teacher.email}}</p>
                  <a  class="m-t-10 waves-effect waves-dark btn btn-primary btn-md btn-rounded" data-abc="true">Call {{teacher.phone_number}}</a>
