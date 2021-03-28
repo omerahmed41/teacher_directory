@@ -49,6 +49,7 @@ https://lucid.app/lucidchart/34d86fa3-b28f-4c74-b185-d4789310098c/view?page=0_0#
 
 #DEMO app URL
  http://omersuliman.com
+ or http://162.243.169.202/
  
 username : admin
 password: admin
