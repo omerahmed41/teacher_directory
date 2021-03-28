@@ -4,7 +4,11 @@ from django.core.files.storage import default_storage
 import os
 import os.path
 from os import path
+import errno
 from django.utils.html import mark_safe
+
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 class TimeStampMixin(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -37,3 +41,7 @@ class Teacher (TimeStampMixin):
     def __str__(self):
         return self.first_name + ' ' +  self.last_name
         
+    def profile_picture_exists(self):      
+      if  os.path.exists(BASE_DIR + '/django_project/'+ self.profile_picture.url):        
+        return True
+       
